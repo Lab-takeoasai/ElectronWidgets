@@ -1,6 +1,9 @@
 var gulp = require('gulp');
 var typescript = require('gulp-typescript');
 var plumber = require("gulp-plumber");
+var uglify = require("gulp-uglify");
+var browserify = require('gulp-browserify');
+
 
 typescriptProject = typescript.createProject('tsconfig.json', function() {
   typescript: require('typescript')
@@ -13,6 +16,11 @@ gulp.task('ts', function() {
          ])
         .pipe(plumber())
         .pipe(typescript(typescriptProject))
+        .pipe(browserify({
+          insertGlobals : true,
+          debug : true
+        }))
+        .pipe(uglify())
         .pipe(gulp.dest('./build'));
 });
 
