@@ -5,6 +5,7 @@ var uglify = require("gulp-uglify");
 var browserify = require('gulp-browserify');
 var istanbul = require('gulp-istanbul');
 var mocha = require('gulp-mocha');
+var jasmine = require('gulp-jasmine');
 
 
 typescriptProject = typescript.createProject('tsconfig.json', function() {
@@ -27,6 +28,18 @@ gulp.task('ts', function() {
         .pipe(uglify())
         .pipe(istanbul.writeReports('coverage'))
         .pipe(gulp.dest('./build'))
+});
+
+gulp.task('test', function() {
+  gulp.src([
+    './test/*/*.ts'
+  ])
+  .pipe(typescript(typescriptProject))
+  .pipe(browserify({
+    insertGlobals : true,
+    debug : true
+   }))
+   .pipe(jasmine())
 });
 
 gulp.task('watch', function() {
