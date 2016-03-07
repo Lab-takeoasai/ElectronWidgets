@@ -3,6 +3,8 @@ var typescript = require('gulp-typescript');
 var plumber = require("gulp-plumber");
 var uglify = require("gulp-uglify");
 var browserify = require('gulp-browserify');
+var istanbul = require('gulp-istanbul');
+var mocha = require('gulp-mocha');
 
 
 typescriptProject = typescript.createProject('tsconfig.json', function() {
@@ -20,8 +22,11 @@ gulp.task('ts', function() {
           insertGlobals : true,
           debug : true
         }))
+        .pipe(istanbul())
+        .pipe(mocha())
         .pipe(uglify())
-        .pipe(gulp.dest('./build'));
+        .pipe(istanbul.writeReports('coverage'))
+        .pipe(gulp.dest('./build'))
 });
 
 gulp.task('watch', function() {
