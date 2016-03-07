@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/takeo-asai/gulp_test/issues"
   },
-  "homepage": "https://github.com/takeo-asai/gulp_test#readme"
+  "homepage": "https://github.com/takeo-asai/gulp_test#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-plumber": "^1.1.0",
+    "gulp-typescript": "^2.12.1"
+  }
 }
