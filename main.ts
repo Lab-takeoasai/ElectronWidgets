@@ -4,6 +4,7 @@
 
 import Electron = require("electron");
 import wm = require("./app/models/WindowManager");
+import Menubar = require("./app/models/Menubar");
 
 class MyApplication {
     mainWindow: Electron.BrowserWindow = null;
@@ -21,6 +22,7 @@ class MyApplication {
 
     onReady() {
         wm.WindowManager.restoreWindows();
+        Menubar.getMenubar();
     }
 }
 

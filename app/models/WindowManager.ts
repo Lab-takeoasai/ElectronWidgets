@@ -16,10 +16,12 @@ export class WindowManager {
     }
     return this._windowManager;
   }
+  _visible: boolean;
   constructor() {
     if (WindowManager._windowManager) {
       throw new Error("must use the getManager().");
     }
+    this._visible = true;
   }
 
   static getConfigureNames() {
@@ -34,6 +36,14 @@ export class WindowManager {
       WindowManager.getManager().create(name);
     }
   }
+  static toggleVisible() {
+    let manager = WindowManager.getManager();
+    for (let name of manager.getWindowNames()) {
+      manager.closeWindowName(name);
+    }
+    manager._visible = !manager._visible;
+    WindowManager.restoreWindows();
+  }
 
   private _windows: {[key: string]: Electron.BrowserWindow} = {};
   public create(name: string) {
@@ -41,7 +51,7 @@ export class WindowManager {
     storage.get(name, (error, config) => {
       if (error) throw error;
 
-      let window = this.createWindow(config, true);
+      let window = this.createWindow(config, this._visible);
       window.loadURL("file://" + __dirname + "/../views/index.html");
       this._windows[name] = window;
 
