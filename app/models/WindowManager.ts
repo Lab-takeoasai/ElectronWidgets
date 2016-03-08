@@ -1,8 +1,9 @@
 /// <reference path="../../typings/main.d.ts"/>
-
 import Electron = require("electron");
 
 const storage = require("electron-json-storage");
+const glob = require("glob");
+const path = require("path");
 
 // singleton class
 export class WindowManager {
@@ -21,6 +22,19 @@ export class WindowManager {
     }
   }
 
+  static getConfigureNames() {
+    let matches = glob.sync(Electron.app.getPath("userData") + "/*.json");
+    return matches.map(($0) => {
+      return path.basename($0, ".json");
+    });
+  }
+  static restoreWindows() {
+    let configNames = WindowManager.getConfigureNames();
+    for (let name of configNames) {
+      WindowManager.getManager().create(name);
+    }
+  }
+
   private _windows: {[key: string]: Electron.BrowserWindow} = {};
   public create(name: string) {
     // storage must need callback
@@ -28,8 +42,7 @@ export class WindowManager {
       if (error) throw error;
 
       let window = this.createWindow(config, true);
-      // this.mainWindow.loadURL('file://' + __dirname + '/index.html');
-      // window.loadURL("http://google.com/");
+      // window.loadURL('file://' + __dirname + '/index.html');
       this._windows[name] = window;
 
       window.on("close", () => {

@@ -20,7 +20,7 @@ class MyApplication {
     }
 
     onReady() {
-        wm.WindowManager.getManager().create("test");
+        wm.WindowManager.restoreWindows();
     }
 }
 
