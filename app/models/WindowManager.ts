@@ -30,19 +30,18 @@ export class WindowManager {
       return path.basename($0, ".json");
     });
   }
-  static restoreWindows() {
+  restoreWindows() {
     let configNames = WindowManager.getConfigureNames();
     for (let name of configNames) {
-      WindowManager.getManager().create(name);
+      this.create(name);
     }
   }
-  static toggleVisible() {
-    let manager = WindowManager.getManager();
-    for (let name of manager.getWindowNames()) {
-      manager.closeWindowName(name);
+  toggleVisible() {
+    for (let name of this.getWindowNames()) {
+      this.closeWindowName(name);
     }
-    manager._visible = !manager._visible;
-    WindowManager.restoreWindows();
+    this._visible = !this._visible;
+    this.restoreWindows();
   }
 
   private _windows: {[key: string]: Electron.BrowserWindow} = {};
@@ -53,6 +52,8 @@ export class WindowManager {
 
       let window = this.createWindow(config, this._visible);
       window.loadURL("file://" + __dirname + "/../views/index.html");
+      // window.loadURL("file://" + Electron.app.getPath("userData") + "/index.html");
+
       this._windows[name] = window;
 
       window.on("close", () => {

@@ -2,6 +2,7 @@
 /// <reference path="./ScriptServer.ts"/>
 import Electron = require("electron");
 import angular = require("angular");
+// import Server = require("/Users/takeo/Programs/sandbox/gulp_test/app/models/ScriptServer");
 import Server = require("../models/ScriptServer");
 
 // Script is called by Browser

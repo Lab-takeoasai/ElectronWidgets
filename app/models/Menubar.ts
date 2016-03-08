@@ -38,7 +38,6 @@ class Menubar {
     Menu.setApplicationMenu(menu);
   }
 
-
   // each MenuItem is divided as a function
   private helpMenu() {
     let menu = {
@@ -77,7 +76,7 @@ class Menubar {
           }
         },
         {type: "separator"},
-        {label: "Toggle visible", click: () => { wm.WindowManager.toggleVisible(); }},
+        {label: "Toggle visible", click: () => { wm.WindowManager.getManager().toggleVisible(); }},
       ]
     };
     return menu;
