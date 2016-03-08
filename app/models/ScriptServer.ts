@@ -4,7 +4,7 @@ import Electron = require("electron");
 const execSync = require("child_process").execSync;
 
 
-export class ScriptServer {
+class ScriptServer {
   _name: string;
   _command: string;
   _interval: number;
@@ -14,7 +14,8 @@ export class ScriptServer {
     this._interval = interval;
   }
   exec() {
-    return execSync(this._command);
+    return execSync(this._command, {encoding: "utf8"});
   }
 
 }
+export = ScriptServer;

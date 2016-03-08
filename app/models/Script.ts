@@ -4,6 +4,7 @@ import Electron = require("electron");
 
 //import server = require("./ScriptServer");
 import angular = require("angular");
+import Server = require("../models/ScriptServer");
 
 class Script {
   _name: string;
@@ -16,10 +17,9 @@ class Script {
   }
   exec() {
     let app = angular.module(this._name, []);
-    //let script = new server.ScriptServer(this._name, this._command, this._interval);
-  //  let script = new server.ScriptServer("1", "ls", 1000);
-    app.controller("body", ["$scope", ($scope) => {
-      $scope.stdout = "loading";
+    let script = new Server(this._name, "ls", 1000);
+    app.controller("body", ["$scope", "$interval", ($scope, $interval) => {
+      $scope.stdout = script.exec();
       /*$interval( () => {
         let result = script.exec();
         $scope.$apply(function () { // $apply is needed to be displayed ASAP (because of AJAX callback)
