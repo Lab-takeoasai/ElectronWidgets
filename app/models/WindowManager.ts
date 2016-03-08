@@ -1,11 +1,13 @@
 /// <reference path="../../typings/main.d.ts"/>
 
 import Electron = require("electron");
-// import storage = require("electron-json-storage");
+
+const storage = require("electron-json-storage");
 
 // singleton class
 export class WindowManager {
 
+  // class methods
   private static _windowManager: WindowManager = null;
   public static getManager() {
     if (!this._windowManager) {
@@ -21,14 +23,24 @@ export class WindowManager {
 
   private _windows: {[key: string]: Electron.BrowserWindow} = {};
   public create(name: string) {
-    let window = this.createWindow({}, true);
-    // this.mainWindow.loadURL('file://' + __dirname + '/index.html');
-    // window.loadURL("http://google.com/");
-    this._windows[name] = window;
+    // storage must need callback
+    storage.get(name, (error, config) => {
+      if (error) throw error;
 
-    window.on("close", () => {
-      this._windows[name] = null;
-      window = null;
+      let window = this.createWindow(config, true);
+      // this.mainWindow.loadURL('file://' + __dirname + '/index.html');
+      // window.loadURL("http://google.com/");
+      this._windows[name] = window;
+
+      window.on("close", () => {
+        let nConfig = window.getBounds();
+        storage.set(name, nConfig, (error) => {
+          if (error) throw error;
+        });
+        this._windows[name] = null;
+        window = null;
+      });
+
     });
   }
 
@@ -49,12 +61,11 @@ export class WindowManager {
     }
     return windows;
   }
-
   closeWindowName(name: string) {
     this.getWindow(name).close();
   }
 
-
+  // private methods
   private createWindow(config: {[key: string]: string}, visible: boolean): Electron.BrowserWindow {
     let window = new Electron.BrowserWindow( {
       x: +config["x"] || 200,
