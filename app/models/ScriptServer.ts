@@ -1,4 +1,3 @@
-/// <reference path="../../typings/main.d.ts"/>
 import Electron = require("electron");
 
 const execSync = require("child_process").execSync;

@@ -2,8 +2,11 @@
 /// <reference path="./ScriptServer.ts"/>
 import Electron = require("electron");
 import angular = require("angular");
+
+
+/// <reference path="./typings/globalExtend.d.ts"/>
 // import Server = require("/Users/takeo/Programs/sandbox/gulp_test/app/models/ScriptServer");
-import Server = require("../models/ScriptServer");
+import Server = require("app/models/ScriptServer");
 
 // Script is called by Browser
 class Script {

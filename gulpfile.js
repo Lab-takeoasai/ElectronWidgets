@@ -21,10 +21,10 @@ gulp.task('ts', function() {
         .pipe(typescript(typescriptProject))
         .pipe(browserify({
           insertGlobals : true,
-          debug : true
+          debug : false
         }))
         .pipe(uglify())
-        .pipe(gulp.dest('./app'))
+        .pipe(gulp.dest('./build'))
 });
 
 gulp.task('test', function() {

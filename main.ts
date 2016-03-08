@@ -2,6 +2,7 @@
 /// <reference path="./app/models/WindowManager.ts"/>
 /// <reference path="./app/models/Link.ts"/>
 
+
 import Electron = require("electron");
 import wm = require("./app/models/WindowManager");
 import Menubar = require("./app/models/Menubar");
@@ -23,11 +24,9 @@ class MyApplication {
 
     onReady() {
         wm.WindowManager.getManager().restoreWindows();
-        Menubar.getMenubar();
+        // Menubar.getMenubar();
         Link.createScriptPath();
-
-        let x = Electron.app.getAppPath();
-        console.log(x);
+        Link.createSymbolicToNode("");
     }
 }
 

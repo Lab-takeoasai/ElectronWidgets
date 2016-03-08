@@ -13,8 +13,11 @@
         "noLib": false,
         "preserveConstEnums": true,
         "suppressImplicitAnyIndexErrors": true,
-        "sourceMap": true
+        "sourceMap": false
     },
+    "files": [
+      "typings/main.d.ts"
+    ],
     "exclude": [
         "build-darwin-x64",
         "node_modules",

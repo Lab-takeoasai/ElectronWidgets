@@ -51,8 +51,9 @@ export class WindowManager {
       if (error) throw error;
 
       let window = this.createWindow(config, this._visible);
-      window.loadURL("file://" + __dirname + "/../views/index.html");
-      // window.loadURL("file://" + Electron.app.getPath("userData") + "/index.html");
+      let htmlPath = path.normalize(Electron.app.getPath("userData") + "/index.html");
+      // let htmlPath = path.normalize(__dirname + "/../views/index.html");
+      window.loadURL("file://" + htmlPath);
 
       this._windows[name] = window;
 
