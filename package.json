@@ -4,7 +4,7 @@
   "description": "this is a practice project to try 'gulp' to watch source code changes and test TDD",
   "main": "main.js",
   "scripts": {
-    "test": "tsc && gulp test"
+    "test": "tsc && tslint $(git ls-files | egrep -v typings | grep '.ts$') && gulp test"
   },
   "repository": {
     "type": "git",
