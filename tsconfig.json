@@ -16,6 +16,7 @@
         "sourceMap": true
     },
     "exclude": [
+        "build-darwin-x64",
         "node_modules",
         "typings/browser",
         "typings/browser.d.ts"
