@@ -3,14 +3,13 @@ var typescript = require('gulp-typescript');
 var plumber = require("gulp-plumber");
 var uglify = require("gulp-uglify");
 var browserify = require('gulp-browserify');
-var istanbul = require('gulp-istanbul');
-var mocha = require('gulp-mocha');
 var jasmine = require('gulp-jasmine');
-
+var concat = require("gulp-concat");
 
 typescriptProject = typescript.createProject('tsconfig.json', function() {
   typescript: require('typescript')
 });
+
 
 gulp.task('ts', function() {
     gulp.src([
@@ -19,10 +18,11 @@ gulp.task('ts', function() {
          ])
         .pipe(plumber())
         .pipe(typescript(typescriptProject))
-        .pipe(browserify({
+        /*.pipe(browserify({
           insertGlobals : true,
           debug : false
-        }))
+        }))*/
+        .pipe(concat('app.js'))
         .pipe(uglify())
         .pipe(gulp.dest('./build'))
 });

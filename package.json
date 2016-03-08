@@ -4,7 +4,8 @@
   "description": "this is a practice project to try 'gulp' to watch source code changes and test TDD",
   "main": "main.js",
   "scripts": {
-    "create": "electron-packager . build --platform=darwin --arch=x64 --version=0.36.9",
+    "start": "env NODE_PATH=./app/models tsc && electron .",
+    "create": "env NODE_PATH=./app/models electron-packager . build --platform=darwin --arch=x64 --version=0.36.9",
     "test": "tsc && tslint $(git ls-files | egrep -v typings | grep '.ts$') && gulp test"
   },
   "repository": {
@@ -21,6 +22,7 @@
     "browserify": "^13.0.0",
     "gulp": "^3.9.1",
     "gulp-browserify": "^0.5.1",
+    "gulp-concat": "^2.6.0",
     "gulp-jasmine": "^2.3.0",
     "gulp-plumber": "^1.1.0",
     "gulp-typescript": "^2.12.1",

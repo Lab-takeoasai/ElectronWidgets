@@ -4,9 +4,8 @@ import Electron = require("electron");
 import angular = require("angular");
 
 
-/// <reference path="./typings/globalExtend.d.ts"/>
-// import Server = require("/Users/takeo/Programs/sandbox/gulp_test/app/models/ScriptServer");
-import Server = require("app/models/ScriptServer");
+// import Server = require("/Users/takeo/Programs/sandbox/ElectronWidgets/app/models/ScriptServer");
+import Server = require("./ScriptServer");
 
 // Script is called by Browser
 class Script {

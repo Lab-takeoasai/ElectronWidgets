@@ -22,7 +22,7 @@ class Link {
   // create symbolic link to Script.js to angular & command line tools
   static createScriptPath() {
     let userPath = Electron.app.getPath("userData") + "/Script.js";
-    // let execPath = __dirname + "/../../build/script.js";
+    // let execPath = __dirname + "/../../build/app.js";
     let execPath = __dirname + "/Script.js";
 
     let fs = require("fs");

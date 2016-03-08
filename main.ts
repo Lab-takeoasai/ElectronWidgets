@@ -26,7 +26,6 @@ class MyApplication {
         wm.WindowManager.getManager().restoreWindows();
         // Menubar.getMenubar();
         Link.createScriptPath();
-        Link.createSymbolicToNode("");
     }
 }
 

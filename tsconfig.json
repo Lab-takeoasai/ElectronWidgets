@@ -15,9 +15,6 @@
         "suppressImplicitAnyIndexErrors": true,
         "sourceMap": false
     },
-    "files": [
-      "typings/main.d.ts"
-    ],
     "exclude": [
         "build-darwin-x64",
         "node_modules",
