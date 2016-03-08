@@ -35,11 +35,7 @@ gulp.task('test', function() {
     './test/*/*.ts'
   ])
   .pipe(typescript(typescriptProject))
-  .pipe(browserify({
-    insertGlobals : true,
-    debug : true
-   }))
-   .pipe(jasmine())
+  .pipe(jasmine())
 });
 
 gulp.task('watch', function() {
