@@ -6,3 +6,5 @@ install:
 script:
     - tslint --version
     - tslint $(git ls-files | egrep -v typings | grep '.ts$')
+    - tsc
+    - gulp test

@@ -1,3 +1,4 @@
+/// <reference path="main/ambient/github-electron/github-electron.d.ts" />
 /// <reference path="main/ambient/gulp/gulp.d.ts" />
 /// <reference path="main/ambient/jasmine/jasmine.d.ts" />
 /// <reference path="main/ambient/node/node.d.ts" />

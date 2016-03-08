@@ -43,7 +43,7 @@ gulp.task('test', function() {
 });
 
 gulp.task('watch', function() {
-  gulp.watch('app/*/*.ts', ['ts'])
+  gulp.watch('app/*/*.ts', ['test'])
 });
 
 gulp.task('default',function(){

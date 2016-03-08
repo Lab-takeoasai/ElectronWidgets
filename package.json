@@ -2,9 +2,9 @@
   "name": "gulp_test",
   "version": "1.0.0",
   "description": "this is a practice project to try 'gulp' to watch source code changes and test TDD",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
-    "test": "tsc"
+    "test": "tsc && gulp test"
   },
   "repository": {
     "type": "git",
@@ -27,5 +27,8 @@
     "gulp-typescript": "^2.12.1",
     "gulp-uglify": "^1.5.3",
     "jasmine": "^2.4.1"
+  },
+  "dependencies": {
+    "electron-prebuilt": "^0.36.10"
   }
 }

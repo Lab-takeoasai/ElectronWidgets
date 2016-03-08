@@ -2,7 +2,7 @@
 
 
 class FizzBuzz {
-  generate(n: number) {
+  generate(n: number): string | number {
     if (n % 15 === 0) {
       return 'FIZZ_BUZZ'
     } else if (n % 5 === 0) {
