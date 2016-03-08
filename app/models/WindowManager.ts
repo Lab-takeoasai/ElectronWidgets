@@ -42,7 +42,7 @@ export class WindowManager {
       if (error) throw error;
 
       let window = this.createWindow(config, true);
-      // window.loadURL('file://' + __dirname + '/index.html');
+      window.loadURL("file://" + __dirname + "/../views/index.html");
       this._windows[name] = window;
 
       window.on("close", () => {

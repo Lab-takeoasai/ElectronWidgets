@@ -6,19 +6,19 @@
   body {
     -webkit-app-region: drag;
     font-size: 14px;
-    color: #DDDDDD;
+    color: #999999;
     margin: 0px;
   }
 </style>
-<script src="./Script.js"></script>
+<script src="../models/Script.js"></script>
 <script>
-var s = new Script("host", "ruby '/Users/takeo/Library/Application Support/Electron_app/host.rb'", 1000);
+var s = new Script("index", "ps", 1000);
 s.exec();
 </script>
 </head>
 <body>
   <div ng-controller="body">
-    <pre>{{ stdout }} {{ stderr }}</pre>
+    [<pre>{{ stdout }} {{ stderr }}</pre>]
   </div>
 </body>
 </html>

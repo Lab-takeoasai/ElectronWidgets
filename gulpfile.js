@@ -23,11 +23,8 @@ gulp.task('ts', function() {
           insertGlobals : true,
           debug : true
         }))
-        .pipe(istanbul())
-        .pipe(mocha())
         .pipe(uglify())
-        .pipe(istanbul.writeReports('coverage'))
-        .pipe(gulp.dest('./build'))
+        .pipe(gulp.dest('./app'))
 });
 
 gulp.task('test', function() {
